@@ -19,6 +19,8 @@
 - App\Models\Loan::factory()->count(20)->create();
 - App\Models\Repayment::factory()->count(4)->create();
 
+Note: For test users, each account have "password" as default password
+
 ## Assumptions
 
 You have a running database server
