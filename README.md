@@ -6,8 +6,8 @@
 * As an approver, I can view all loan applications
 * As an approver, I can approve/reject loan applications
 
-As a business owner, I can view a loan application and my repayments for it
-As a business owner, I can view all my loan applications 
+* As a business owner, I can view a loan application and my repayments for it
+* As a business owner, I can view all my loan applications 
 
 ## Installation
 
