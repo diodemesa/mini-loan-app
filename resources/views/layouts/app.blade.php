@@ -30,8 +30,8 @@
             </header>
 
             <!-- Page Content -->
-            <main class="py-4">
-                 @yield('content')
+            <main>
+                {{ $slot }}
             </main>
         </div>
 
