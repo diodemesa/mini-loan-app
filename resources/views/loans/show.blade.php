@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.oldapp')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -28,7 +28,7 @@
                           </tbody>
                         </table>
 
-                        <form action="loan/submit" method="POST">
+                        <form action="submit" method="POST">
                             <input type="hidden" name="loan_id" value="{{$loan->loan_id}}">
                             <button type="submit" class="btn btn-primary btn-sm">Send repayment</button>
                         </form>
