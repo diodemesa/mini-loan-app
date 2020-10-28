@@ -34,13 +34,21 @@
                     @foreach($loans as $loan)
                     <tr>
                         <td class="border px-4 py-2">{{ $loan->loan_id }}</td>
-                        <td class="border px-4 py-2">{{ $loan->amount_reqd }}</td>
+                        <td class="border px-4 py-2">{{ number_format($loan->amount_reqd, 2, '.', ',') }}</td>
                         <td class="border px-4 py-2">{{ $loan->terms }}</td>
                         @if(auth()->user()->is_approver == true)
-                            <td class="border px-4 py-2">
+                            <td class="border px-4 py-2">   
+                                Repayment: 
                                 <button wire:click="edit({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                             </td>
                         @endif
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2" colspan=3">
+                            @foreach($loan->repayments as $repayment)
+                            <p>{{ number_format($repayment->amount, 2, '.', ',') }} on {{ date('D F j, Y, g:i a', strtotime($repayment->payment_date)) }}</p>
+                            @endforeach
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
