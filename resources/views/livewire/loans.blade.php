@@ -29,29 +29,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($loans as $loan)
-                    <tr>
-                        <td class="border px-4 py-2">{{ $loan->loan_id }}</td>
-                        <td class="border px-4 py-2">{{ $loan->currency }} {{ number_format($loan->amount_reqd, 2, '.', ',') }}</td>
-                        <td class="border px-4 py-2">{{ $loan->terms }}</td>
-                        @if(auth()->user()->is_approver == true)
-                            <td class="border px-4 py-2">   
-                                <button wire:click="edit({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                    @if(count($loans) == 0)
+                        <tr>
+                            <td class="border px-4 py-2 text-center" colspan="4">No loan application.</td>
+                        </tr>
+                    @else
+                        @foreach($loans as $loan)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $loan->loan_id }}</td>
+                            <td class="border px-4 py-2">{{ $loan->currency }} {{ number_format($loan->amount_reqd, 2, '.', ',') }}</td>
+                            <td class="border px-4 py-2">{{ $loan->terms }}</td>
+                            @if(auth()->user()->is_approver == true)
+                                <td class="border px-4 py-2">   
+                                    <button wire:click="edit({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                </td>
+                            @else 
+                                <td class="border px-4 py-2">   
+                                    <button wire:click="sendRepayment({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send Repayment</button>
+                                </td>
+                            @endif
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2" colspan=4">
+                                @foreach($loan->repayments as $repayment)
+                                <p>{{ $loan->currency }} {{ number_format($repayment->amount, 2, '.', ',') }} on {{ date('D F j, Y, g:i a', strtotime($repayment->payment_date)) }}</p>
+                                @endforeach
                             </td>
-                        @else 
-                            <td class="border px-4 py-2">   
-                                <button wire:click="sendRepayment({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send Repayment</button>
-                            </td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2" colspan=4">
-                            @foreach($loan->repayments as $repayment)
-                            <p>{{ $loan->currency }} {{ number_format($repayment->amount, 2, '.', ',') }} on {{ date('D F j, Y, g:i a', strtotime($repayment->payment_date)) }}</p>
-                            @endforeach
-                        </td>
-                    </tr>
-                    @endforeach
+                        </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
