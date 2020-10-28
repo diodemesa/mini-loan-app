@@ -1,13 +1,12 @@
 ## Mini Aspire
 
-* As a user, I can login on the system
-* As a business owner, I can submit a loan application
-* As a business owner, I can submit repayments
-* As an approver, I can view all loan applications
-* As an approver, I can approve/reject loan applications
-
-* As a business owner, I can view a loan application and my repayments for it
-* As a business owner, I can view all my loan applications 
+* As a user, I can login on the system - DONE
+* As a business owner, I can submit a loan application - DONE
+* As a business owner, I can submit repayments - DONE
+* As an approver, I can view all loan applications - DONE
+* As an approver, I can approve/reject loan applications - DONE
+* As a business owner, I can view a loan application and my repayments for it - DONE
+* As a business owner, I can view all my loan applications - DONE
 
 ## Installation
 
