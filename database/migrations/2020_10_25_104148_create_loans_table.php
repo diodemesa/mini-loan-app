@@ -19,6 +19,7 @@ class CreateLoansTable extends Migration
             $table->integer('terms');
             $table->unsignedInteger('user_id');
             $table->enum('status', array('PENDING', 'REJECTED', 'APPROVED'));
+            $table->string('currency',3)->default('SGD');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

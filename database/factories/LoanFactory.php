@@ -27,6 +27,7 @@ class LoanFactory extends Factory
             'terms' => $this->faker->numberBetween($min = 1, $max = 100),
         	'amount_reqd' => $this->faker->randomFloat($nbMaxDecimals = 5, $min = 0, $max = 10000),
         	'user_id' => User::factory()->create()->id,
+            'currency' => 'SGD'
         ];
     }
 }

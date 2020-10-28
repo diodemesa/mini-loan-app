@@ -4,11 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Loan;
+use App\Models\Repayment;
   
 
 class Loans extends Component
 {
-    public $loans, $amount_reqd, $terms, $loan_id, $user_id, $status;
+    public $loans, $amount_reqd, $terms, $loan_id, $user_id, $status, $currency;
     public $isOpen = 0;
 
     public function render()
@@ -94,26 +95,6 @@ class Loans extends Component
         $this->resetInputFields();
     }
 
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array
-    //  */
-    // public function edit($id)
-    // {
-    //     $post = Post::findOrFail($id);
-    //     $this->post_id = $id;
-    //     $this->title = $post->title;
-    //     $this->body = $post->body;
-    
-    //     $this->openModal();
-    // }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function edit($loan_id)
     {
         $loan = Loan::findOrFail($loan_id);
@@ -125,14 +106,14 @@ class Loans extends Component
         $this->openModal();
     }
      
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array
-    //  */
-    // public function delete($id)
-    // {
-    //     Post::find($id)->delete();
-    //     session()->flash('message', 'Post Deleted Successfully.');
-    // }
+    public function sendRepayment($loan_id)
+    {
+        $loan = Loan::findOrFail($loan_id);
+        Repayment::create([
+            'loan_id' => $loan_id,
+            'amount' => $loan->amount_reqd/$loan->terms,
+            'payment_date' => \Carbon\Carbon::now(),
+            'payer' => auth()->user()->id
+        ]);
+    }
 }

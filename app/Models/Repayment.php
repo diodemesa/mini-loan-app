@@ -10,7 +10,7 @@ class Repayment extends Model
     use HasFactory;
     
     protected $primaryKey = 'repayment_id';    
-    protected $fillable = ['repayment_id','payer', 'loan_id', 'amount'];
+    protected $fillable = ['repayment_id','payer', 'loan_id', 'amount', 'payment_date'];
 
     /**
      * Get the loan associated with the repayment.
