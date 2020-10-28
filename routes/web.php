@@ -24,13 +24,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-# LOAN APPLICATION
-// Route::get('/loans', 'LoanController@index')->name('view.loans');
+// # LOAN APPLICATION
+// // Route::get('/loans', 'LoanController@index')->name('view.loans');
 
-// Route::get('loans', 'LoanController@index')->name('view.loans')->middleware('auth.basic.once');
-Route::middleware('auth:sanctum')->get('loans', 'LoanController@index')->name('view.loans')->middleware('auth:sanctum');
+// // Route::get('loans', 'LoanController@index')->name('view.loans')->middleware('auth.basic.once');
+// Route::middleware('auth:sanctum')->get('loans', 'LoanController@index')->name('view.loans')->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->prefix('loan')->group(function () {
-	Route::get('/submit', 'LoanController@processLoanApplication')->name('loan.submit');
-	Route::get('/{loan}', 'LoanController@show')->name('loan.repayments');
-});
+// Route::middleware('auth:sanctum')->prefix('loan')->group(function () {
+// 	Route::get('/submit', 'LoanController@processLoanApplication')->name('loan.submit');
+// 	Route::get('/{loan}', 'LoanController@show')->name('loan.repayments');
+// });
+
+Route::middleware('auth:sanctum')->get('loan', Loans::class);
