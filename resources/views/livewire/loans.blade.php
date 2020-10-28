@@ -25,7 +25,9 @@
                         <th class="px-4 py-2 w-20">No.</th>
                         <th class="px-4 py-2">Amount Required</th>
                         <th class="px-4 py-2">Terms</th>
-                        <th class="px-4 py-2">Action</th>
+                        @if(auth()->user()->is_approver == true) 
+                            <th class="px-4 py-2">Action</th> 
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +36,11 @@
                         <td class="border px-4 py-2">{{ $loan->loan_id }}</td>
                         <td class="border px-4 py-2">{{ $loan->amount_reqd }}</td>
                         <td class="border px-4 py-2">{{ $loan->terms }}</td>
-                        <td class="border px-4 py-2">
-                        <button wire:click="edit({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
-                            <button wire:click="delete({{ $loan->loan_id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                        </td>
+                        @if(auth()->user()->is_approver == true)
+                            <td class="border px-4 py-2">
+                                <button wire:click="edit({{ $loan->loan_id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                            </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
