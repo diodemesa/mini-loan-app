@@ -16,7 +16,7 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $loans = Loan::latest()->where('')->get();
+        $loans = Loan::latest()->where('user_id', '=', auth()->user()->id)->get();
         return view('loans.index',[
                 'loans' => $loans,
                 'currency' => $this->currency

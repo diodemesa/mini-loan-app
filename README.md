@@ -26,3 +26,7 @@ You have a running database server
 You have Composer, PHP >= 7.3, node.js/NPM installed on your system
 storage and vendor folders is writable by server
 Weekly repayments is calculated as Amount Required/Loan Terms
+
+## TechStack
+
+Laravel 8.11.2, Jetstream with Livewire
