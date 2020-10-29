@@ -30,3 +30,6 @@ Weekly repayments is calculated as Amount Required/Loan Terms
 ## TechStack
 
 Laravel 8.11.2, Jetstream with Livewire
+
+To implement : Behat and Phpspec
+Status: both have requirement compatibility issues with Laravel 8
