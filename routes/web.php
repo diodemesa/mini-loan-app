@@ -35,4 +35,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // 	Route::get('/{loan}', 'LoanController@show')->name('loan.repayments');
 // });
 
-Route::middleware('auth:sanctum')->get('loan', Loans::class);
+// Route::middleware('auth:sanctum')->get('loan', Loans::class);
+Route::middleware('auth:sanctum')->apiResource('loan', 'LoanController');
